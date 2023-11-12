@@ -1,0 +1,45 @@
+<div id="js_newElement" class="job_positions_panel">
+    <div th:class="job_position_new">
+        <table id="basic_info">
+            <thead>
+            <tr>
+                <th>Job title</th>
+                <th>Working shifts</th>
+                <th>Posted before</th>
+                <th>For Airport</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input name="name">
+                </td>
+                <td>
+                    <select id="js_new_working_hours_select">
+                        <option th:each="type : ${workingHours}" th:text="${type}"></option>
+                        <input type="hidden" name="workingHours">
+                    </select>
+
+                </td>
+                <td>
+                    <span>&mdash;</span>
+                </td>
+                <td>
+                    <div>Bulgarian airport</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div id="requirements_panel">
+            <span>Requirements&nbsp;:&nbsp;</span>
+            <textarea name="requirements" id="newPositionRequirements" oninput="resizeField(this);"></textarea>
+        </div>
+        <span>Contacts :&emsp;</span>
+        <select id="contactSelect">
+            <option th:each="contact : ${allContacts}" th:value="${contact.id}"><!--
+                --><span th:text="${contact.emailAddress + ' , ' + contact.phoneNumber}"></span><!--
+         --></option>
+        </select>
+    </div>
+</div>

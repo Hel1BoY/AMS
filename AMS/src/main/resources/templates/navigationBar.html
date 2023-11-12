@@ -1,0 +1,30 @@
+<link rel="stylesheet" th:href="@{/assets/css/navigation_bar.css}" />
+
+<section id="header">
+    <div id="header_panel">
+        <form action="#" th:action="@{/home}" th:object="${model}" method="post">
+            <button type="submit" id="airport_name" th:text="${airportName}"></button>
+        </form>
+        <nav id="header_nav_bar">
+            <form id="destination_form" action="#" th:action="@{/destinations}" th:object="${model}" method="post">
+                <button type="submit">Destinations</button>
+            </form>
+            <form id="airlines_form" action="#" th:action="@{/airlines}" th:object="${model}" method="post">
+                <button type="submit">Airline companies</button>
+            </form>
+            <form id="careers_form" action="#" th:action="@{/careers}" th:object="${model}" method="post">
+                <button type="submit">Careers</button>
+            </form>
+        </nav>
+        <div id="weather_panel_wrapper">
+            <div id="weather_panel" th:if="${weather.city} != '' " th:switch="${weather.type}">
+                <p id="weather_label">Weather now</p>
+                <img th:case="sunny" th:src="@{/img/sun.png}" alt="Sunny">
+                <img th:case="cloudy" th:src="@/img/clouds.png}" alt="Cloudy">
+                <span class="temperature" th:text="${weather.temperature} + '&degC' + '&nbsp;/&nbsp;'"></span>
+                <span class="temperature" th:text="${#numbers.formatDecimal(weather.temperature*1.8+32, 0, 'COMMA', 1, 'POINT') + 'F'}"></span></span>
+            </div>
+        </div>
+    </div>
+</section>
+

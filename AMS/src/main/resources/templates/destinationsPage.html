@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Destinations</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main_init_styles.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/destinations_page.css}" />
+</head>
+<body>
+<div id="main_div">
+
+    <div th:insert="navigationBar"></div>
+
+    <div id="destinations_panel_wrapper">
+        <div>
+            <ul id="destinations_list" th:each="item : ${destinations}">
+                <li class="country_items" th:text="${item.key}"></li>
+                <ul th:each="city : ${item.value}">
+                    <li class="city_items" th:text="${city}"></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript" th:src="@{/assets/js/home-page.js}"></script>
+</body>
+</html>

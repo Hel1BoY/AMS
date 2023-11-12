@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Airlines</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main_init_styles.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/airlines_page.css}" />
+</head>
+<body>
+<div id="main_div">
+
+    <div th:insert="navigationBar"></div>
+
+    <div id="filterPanel">
+        <div class="option">
+            <span class="airlineClasses">First</span>
+            <input id="first_cls_check" type="checkbox" onclick="markCheckedOption(this);">
+        </div>
+        <div class="option">
+            <span class="airlineClasses">Business</span>
+            <input id="business_cls_check" type="checkbox" onclick="markCheckedOption(this);">
+        </div>
+        <div class="option">
+            <span class="airlineClasses">Premium Eco</span>
+            <input id="premium_eco_cls_check" type="checkbox" onclick="markCheckedOption(this);">
+        </div>
+        <div class="option">
+            <span class="airlineClasses">Eco</span>
+            <input id="eco_check" type="checkbox" onclick="markCheckedOption(this);">
+        </div>
+        <div class="option">
+            <span id="manipulateAllItemText" class="airlineClasses">Select All</span>
+            <input type="checkbox" onclick="toggleAllSwitcherOptions(this);">
+        </div>
+    </div>
+
+    <div id="airlines_panel_wrapper">
+        <div id="airlines_panel">
+            <div th:each="airline : ${airlines}">
+                <div style="display: none;" class="airlines_data_parser" th:text="${airline.name + '|' + airline.classes}"></div>
+
+                <!-- for displaying -->
+                <div class="airline_name_block">
+                    <p th:text="${airline.name}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript" th:src="@{/assets/js/airlines-page.js}"></script>
+</body>
+</html>

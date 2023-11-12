@@ -1,0 +1,99 @@
+#header {
+    z-index: 10;
+}
+
+#header_panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: inherit;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    background: linear-gradient(0deg, #00f, #add8e6, #6565a9, #2b2b88);
+    border-radius: 0px 0px 20px 20px;
+    font: italic 20px Arial;
+}
+
+#header_panel nav#header_nav_bar {
+    display: flex;
+    flex-basis: 53%;
+    justify-content: space-evenly;
+    color: #2d2d5e;
+    font-weight: bold;
+}
+
+#header_panel nav#header_nav_bar button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    padding: 0 5px;
+    font-size: initial;
+    color: #000;
+}
+
+#header_panel nav#header_nav_bar button:hover {
+    border-bottom-color: #000;
+}
+
+section#header {
+    width: 100%;
+    min-height: 82px;
+}
+
+#weather_panel_wrapper {
+    flex-basis: fit-content;
+    font-size: 16px;
+}
+
+#weather_panel {
+    padding: 7px;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(223,249,255, 0.3);
+    border: 3px #3e22a0 solid;
+    border-radius: 15px;
+}
+
+#weather_panel img {
+     width: 30px;
+     height: 30px;
+     margin-left: 10px;
+}
+
+#weather_panel .temperature {
+     display: inline-block;
+     top: -8px;
+     left: 5px;
+     color: #3e22a0;
+}
+
+#weather_label {
+    color: #3e22a0;
+}
+
+button#airport_name {
+    background: transparent;
+    border: none;
+    flex-basis: fit-content;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 7px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1059px) {
+    #header {
+        height: 108px;
+    }
+}
+
+@media only screen and (max-width: 655px) {
+    #header {
+        height: 140px;
+    }
+}

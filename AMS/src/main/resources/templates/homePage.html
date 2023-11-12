@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Bulgarian airport</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main_init_styles.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/home_page.css}" />
+</head>
+<body>
+    <div id="main_div">
+
+        <div th:insert="navigationBar"></div>
+
+        <section id="flights">
+           <p id="flights_header">Flights current information</p>
+           <div id="flight_info_container">
+               <div class="flight_info_wrapper">
+                   <p class="label">Arrivals</p>
+                   <div class="flights" th:with="arrivals=${categorizedFlights.get('ARRIVED')}">
+                       <table class="flights_info">
+                           <tr>
+                               <td>Country</td>
+                               <td>Airline</td>
+                               <td>Landing sector</td>
+                           </tr>
+                           <div th:each="arrivalFlight : ${arrivals}">
+                               <tr>
+                                    <td th:text="${arrivalFlight.comingFromLocation.country.name}"></td>
+                                    <td th:text="${arrivalFlight.airlineCompany.name}"></td>
+                                    <td th:text="${arrivalFlight.landingSector}"></td>
+                               </tr>
+                           </div>
+                       </table>
+                   </div>
+               </div>
+
+               <div class="flight_info_wrapper">
+                   <p class="label">Waiting</p>
+                   <div class="flights" th:with="waitings=${categorizedFlights.get('WAITING')}">
+                       <table class="flights_info">
+                           <tr>
+                               <td>Country</td>
+                               <td>Airline</td>
+                               <td>Landing sector</td>
+                           </tr>
+                           <div th:each="waitingFlight : ${waitings}">
+                               <tr>
+                                   <td th:text="${waitingFlight.comingFromLocation.country.name}"></td>
+                                   <td th:text="${waitingFlight.airlineCompany.name}"></td>
+                                   <td th:text="${waitingFlight.landingSector}"></td>
+                               </tr>
+                           </div>
+                       </table>
+                   </div>
+               </div>
+
+               <div class="flight_info_wrapper">
+                   <p class="label">Departures</p>
+                   <div class="flights" th:with="departings=${categorizedFlights.get('DEPARTED')}">
+                       <table class="flights_info">
+                           <tr>
+                               <td>Country</td>
+                               <td>Airline</td>
+                               <td>Landing sector</td>
+                           </tr>
+                           <div th:each="departingFlight : ${departings}">
+                               <tr>
+                                   <td th:text="${departingFlight.comingFromLocation.country.name}"></td>
+                                   <td th:text="${departingFlight.airlineCompany.name}"></td>
+                                   <td th:text="${departingFlight.landingSector}"></td>
+                               </tr>
+                           </div>
+                       </table>
+                   </div>
+               </div>
+           </div>
+        </section>
+
+       <section id="detailed_search_flight">
+           <p>You are searching for flight which is not listed above ?</p>
+           <p>Try here</p>
+           <div id="search_flight_input_wrapper">
+               <input id="search_flight_input" type="text" placeholder="Enter country (only for arrivals)" oninput="checkForFlightResultsFound(this);">
+               <p id="results_found"></p>
+           </div>
+           <table id="results_data"></table>
+       </section>
+
+    </div>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script type="text/javascript" th:src="@{/assets/js/home-page.js}"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+INSERT INTO AIRPORT (ID, NAME, CONTACT_ID) VALUES (1, 'Bulgarian airport', '1');

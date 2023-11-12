@@ -1,0 +1,40 @@
+/* 'mark' the chosen tab in the header nav bar */
+nav#header_nav_bar form#destination_form button {
+    color: #00f;
+}
+/**/
+
+#destinations_panel_wrapper {
+    margin: auto;
+    margin-top: 50px;
+    border: transparent;
+    border-style: double;
+    border-radius: 20px;
+    width: 90%;
+    min-height: fit-content;
+}
+
+#destinations_panel_wrapper div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    padding: 30px;
+}
+
+#destinations_panel_wrapper div ul {
+    list-style-type: none;
+}
+
+#destinations_panel_wrapper div ul li.country_items {
+    color: #0038b5;
+    font-size: 25px;
+    font-style: italic;
+    letter-spacing: 5px;
+}
+
+#destinations_panel_wrapper div ul li.city_items{
+    color: #1e90ff;
+    letter-spacing: 3px;
+    font-size: initial;
+    margin-top: 3px;
+}

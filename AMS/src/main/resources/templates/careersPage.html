@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Careers</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main_init_styles.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/careers_page.css}" />
+</head>
+<body>
+<div id="main_div">
+
+    <div th:insert="navigationBar"></div>
+
+    <div id="messages">
+        <div id="hint_message" class="hide"></div>
+    </div>
+
+    <div style="display: flex;">
+        <div id="tools_wrapper">
+            <div id="tools" onchange="changeToolStyleWhenSelected(this); changeHintMessage(this);">
+                <div id="add" class="instruments">
+                    <img th:src="@{/img/add_item_icon.png}" alt="Add new" class="tool_image">
+                    <input name="tool_radio" id="add_item" title="Add" type="radio" class="tool_option" onclick="addNewJobPosition();">
+                </div>
+                <div id="edit" class="instruments">
+                    <img th:src="@{/img/edit_item_icon.png}" alt="Edit" class="tool_image">
+                    <input name="tool_radio" id="edit_item" title="Edit" type="radio" class="tool_option">
+                </div>
+                <div id="remove" class="instruments">
+                    <img th:src="@{/img/remove_item_icon.png}" alt="Remove" class="tool_image">
+                    <input name="tool_radio" id="remove_item" title="Remove" type="radio" class="tool_option" onclick="selectPositionForRemoving();">
+                </div>
+                <div id="save" class="hide">
+                    <img th:src="@{/img/save_icon.png}" alt="Remove" class="tool_image">
+                    <button name="tool_radio" id="save_item" title="Save" onclick="submit();" class="tool_option"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="job_positions_panel_wrapper">
+
+            <div th:id="'job_pos_wrap_' + ${openPosition.id}" class="job_positions_panel" th:each="openPosition : ${openPositions}">
+                <div th:id="'job_pos_' + ${openPosition.id}" th:class="job_position">
+                    <table id="basic_info">
+                        <thead>
+                            <tr>
+                                <th>Job title</th>
+                                <th>Working shifts</th>
+                                <th>Posted before</th>
+                                <th>For Airport</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="js_positionName" th:text="${openPosition.name}"></div>
+                                </td>
+                                <td>
+                                    <div class="js_workingHours" th:text="${openPosition.workingHours}"></div>
+                                </td>
+                                <td>
+                                    <span class="js_postedBefore">
+                                        <span th:with="months=${openPosition.postedBefore[0]}"
+                                              th:text="${(0 < months) ?
+                                                            (months == 1) ?
+                                                                (months + 'month')
+                                                            : (months + 'months')
+                                                        : ''}"></span>
+                                        <span th:with="weeks=${openPosition.postedBefore[1]}"
+                                              th:text="${(0 < weeks and weeks < 4) ?
+                                                            (weeks == 1) ?
+                                                                (weeks + 'week')
+                                                            : (weeks + 'weeks')
+                                                        : ''}"></span>
+                                        <span th:with="days=${openPosition.postedBefore[2]}"
+                                              th:text="${(0 < days and days < 7) ?
+                                                            (days == 1) ?
+                                                                (days + 'day')
+                                                            : (days + 'days')
+                                                         : ''}"></span>
+                                        <span th:with="hours=${openPosition.postedBefore[3]}"
+                                              th:text="${(0 < hours and hours < 24) ?
+                                                            (hours == 1) ?
+                                                                (hours + 'hour')
+                                                            : (hours + 'hours')
+                                                         : ''}"></span>
+                                        <span th:with="minutes=${openPosition.postedBefore[4]}"
+                                              th:text="${(0 < minutes and minutes < 59) ?
+                                                            (minutes == 1) ?
+                                                                (minutes + 'minute')
+                                                            : (minutes + 'minutes')
+                                                         : ''}"></span>
+                                        <span th:with="seconds=${openPosition.postedBefore[5]}"
+                                              th:text="${(seconds < 59) ? 'less than a minute' : ''}"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="js_airportName" th:text="${openPosition.airport.name}"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div id="requirements_panel">
+                        <span>Requirements&nbsp;:&nbsp;</span>
+                        <span class="js_requirements" th:text="${openPosition.requirements}"></span>
+                    </div>
+                    <div id="contacts_panel" th:each="contact : ${openPosition.contact}">
+                        <p>Contacts&nbsp;:&nbsp;</p>
+                        <div class="js_contact_info"><!--
+                            --><span th:text="${contact.emailAddress + ' , ' + contact.phoneNumber}"></span><!--
+                     --></div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="newJobPositionForm" class="hide" action="/careers/saveNewPosition" modelAttribute="newJobPosition" method="post">
+                <div th:insert="newJobPositionTemplate"></div>
+            </form>
+            <form id="editJobPositionForm" class="hide" action="/careers/editPosition" modelAttribute="updatedJobPosition" method="post">
+                <div th:insert="newJobPositionTemplate"></div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<script th:inline="javascript">
+    var workingHours = /*[[${workingHours}]]*/;
+    var contacts = /*[[${allContacts}]]*/;
+</script>
+
+<script src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript" th:src="@{/assets/js/careers-page.js}"></script>
+</body>
+</html>

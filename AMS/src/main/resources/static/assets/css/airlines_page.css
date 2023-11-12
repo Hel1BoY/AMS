@@ -1,0 +1,80 @@
+/* 'mark' the chosen tab in the header nav bar */
+nav#header_nav_bar form#airlines_form button {
+    color: #00f;
+}
+/**/
+
+
+#airlines_panel_wrapper {
+    margin: auto;
+    margin-top: 100px;
+    width: 95%;
+}
+
+#airlines_panel_wrapper div {
+    width: fit-content;
+}
+
+#airlines_panel_wrapper #airlines_panel {
+    width: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #0000b6;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#airlines_panel .airline_name_block {
+    border: 8px double blue;
+    border-radius: 50%;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    margin: 10px;
+}
+
+#filterPanel {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#filterPanel div.option {
+    width: 115px;
+    height: 40px;
+    border: 2px solid #00f;
+    background-color: #7cced0;
+    text-align: center;
+}
+
+#filterPanel div span.airlineClasses {
+    top: 7px;
+}
+
+#filterPanel div input[type="checkbox"] {
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    bottom: 20px;
+}
+
+#filterPanel div input[type="checkbox"] {
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    bottom: 20px;
+}
+
+#filterPanel div:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+#filterPanel div:last-child {
+    border-radius: 0 10px 10px 0;
+}
+

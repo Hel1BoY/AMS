@@ -17,3 +17,4 @@ o Usage
 
 o More comments
   - The web application is still being developed!
+  - Test data is loaded before running application!

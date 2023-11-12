@@ -16,4 +16,4 @@ o Usage
   - The project aim is to facilitate managing some airport processes like informing about each airline flight status, all available destinations, available airlines and classes and careers information.
 
 o More comments
-  - The application is still being developed!
+  - The web application is still being developed!
